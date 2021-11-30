@@ -1,0 +1,574 @@
+@keyframes colorAnimation {
+  0% {
+    @media (max-width: 37.5em) {
+      transform: scaleX(1) scaleY(1) translate(0, 0);
+    }
+    @media (max-width: 56.25em) {
+      transform: scaleX(1) scaleY(1) translate(0, 0) rotate(0);
+    }
+    transform: scaleX(1) scaleY(1) translate(0, 0) rotate(-35deg);
+    background-image: linear-gradient(to right, #C94E4E 0%, #E8E8E8 40%, #66A597 60%, #66A597 100%);
+  }
+  50% {
+    @media (max-width: 37.5em) {
+      transform: scaleX(1) scaleY(1) translate(0, 0);
+    }
+    @media (max-width: 56.25em) {
+      transform: scaleX(1) scaleY(1) translate(0, 0) rotate(0);
+    }
+    transform: translate(0, -1%) rotate(-35deg);
+    background-image: linear-gradient(to right, #66A597 0%, #C94E4E 40%, #E8E8E8 60%, #E8E8E8 100%);
+  }
+  100% {
+    @media (max-width: 37.5em) {
+      transform: scaleX(1) scaleY(1) translate(0, 0);
+    }
+    @media (max-width: 56.25em) {
+      transform: scaleX(1) scaleY(1) translate(0, 0) rotate(0);
+    }
+    background-image: linear-gradient(to right, #E8E8E8 0%, #66A597 40%, #C94E4E 60%, #C94E4E 100%);
+    transform: translate(0, -1%) scaleX(1.051) scaleY(1.051) rotate(-35deg);
+  }
+}
+.margin-top-small {
+  margin-top: 2rem;
+}
+.margin-top-medium {
+  margin-top: 4rem;
+}
+.margin-top-large {
+  margin-top: 6rem;
+}
+.margin-top-extra-large {
+  margin-top: 8rem;
+}
+.margin-bottom-small {
+  margin-bottom: 2rem;
+}
+.margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+.margin-bottom-large {
+  margin-bottom: 6rem;
+}
+.margin-bottom-extra-large {
+  margin-bottom: 8rem;
+}
+.margin-right-small {
+  margin-right: 2rem;
+}
+.margin-right-medium {
+  margin-right: 4rem;
+}
+.margin-right-large {
+  margin-right: 6rem;
+}
+.margin-right-extra-large {
+  margin-right: 8rem;
+}
+.margin-left-small {
+  margin-left: 2rem;
+}
+.margin-left-medium {
+  margin-left: 4rem;
+}
+.margin-left-large {
+  margin-left: 6rem;
+}
+.margin-left-extra-large {
+  margin-left: 8rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+@media (max-width: 37.5em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background-color: #302F2F;
+}
+
+.button {
+  width: 12rem;
+  height: 6rem;
+  display: inline-block;
+  content: " ";
+  position: relative;
+  color: #E8E8E8;
+  font-family: "Courier New", Courier, monospace;
+  outline: none;
+  border-radius: 5rem;
+  border-width: 0;
+}
+.button:not(:last-child) {
+  margin-right: 6.5rem;
+}
+.button::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  border-radius: 5rem;
+  right: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100%;
+}
+.button:hover {
+  transition: all 0.2s;
+  transform: translate(0, -3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+}
+.button:hover::after {
+  transition: all 0.2s;
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.button-primary {
+  background-color: #66A597;
+}
+.button-primary::after {
+  background-color: #66A597;
+}
+.button-secondary {
+  background-color: #C94E4E;
+}
+.button-secondary::after {
+  background-color: #C94E4E;
+}
+
+.game {
+  width: 28%;
+  padding-top: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  color: #E8E8E8;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  background-image: linear-gradient(105deg, #66A597, #C94E4E);
+}
+.game-title {
+  font-weight: 900;
+  font-size: 4rem;
+}
+.game-label {
+  font-size: 2rem;
+  width: 100%;
+  display: block;
+}
+.game-input {
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem;
+  background-color: #302F2F;
+  color: #E8E8E8;
+  font-weight: 900;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2rem;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+}
+.game-input:focus {
+  transition: all 0.2s;
+  outline: none;
+  border: none;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: none;
+  border-radius: 0.5rem;
+}
+.game-button-trio {
+  width: 30%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #66A597;
+  color: #E8E8E8;
+  border-radius: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+.game-button-trio:not(:last-child) {
+  margin-right: 2%;
+}
+.game-button-trio:hover {
+  transition: 0.2s;
+  transform: scaleY(1.3) scaleX(1.2);
+}
+.game-button {
+  width: 40%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #66A597;
+  color: #E8E8E8;
+  font-size: 2rem;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+.game-button:not(:last-child) {
+  margin-right: 10%;
+}
+.game-button:hover {
+  transition: 0.2s;
+  transform: scaleY(1.3) scaleX(1.2);
+}
+.game-final-won {
+  background-color: #66A597;
+  width: 30%;
+  margin: 5% auto;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans;
+  color: #E8E8E8;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.game-final-lost {
+  border-radius: 2rem;
+  background-color: #C94E4E;
+  width: 30%;
+  margin: 5% auto;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans;
+  color: #E8E8E8;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.game-race {
+  background-color: #E8E8E8;
+  height: auto;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  color: #302F2F;
+  height: 5rem;
+}
+
+.lobby-name {
+  color: #E8E8E8;
+  font-size: 1.6rem;
+  letter-spacing: 0.01px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.lobby-chat {
+  height: 30rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(to right, rgba(201, 78, 78, 0.5), rgba(102, 165, 151, 0.5));
+  color: #fff;
+  margin: 0 auto;
+  border-radius: 1rem;
+  text-align: left;
+  border: 2rem;
+  font-size: 2rem;
+  overflow-y: scroll;
+  /* Handle */
+  /* Handle on hover */
+}
+.lobby-chat::-webkit-scrollbar {
+  width: 0.7rem;
+}
+.lobby-chat::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.lobby-chat::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.lobby-chat-message {
+  margin-left: 2rem;
+}
+.lobby-chat-small {
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  color: rgba(255, 255, 0, 0.8);
+}
+.lobby-input {
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, rgba(201, 78, 78, 0.5), rgba(102, 165, 151, 0.5));
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  width: 34rem;
+  height: 2.5rem;
+  color: #C94E4E;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2.5rem;
+  box-shadow: 0 0 10 rgba(0, 0, 0, 0.6);
+}
+.lobby-input:focus {
+  border-bottom: 0.1rem solid #66a597;
+  outline: none;
+}
+.lobby-button {
+  width: 5rem;
+  height: 4rem;
+  display: inline-block;
+  content: " ";
+  position: relative;
+  color: #E8E8E8;
+  font-family: "Courier New", Courier, monospace;
+  outline: none;
+  color: #66A597;
+  border-radius: 2rem;
+  font-weight: 900;
+  font-size: 1.5rem;
+  border-width: 0;
+  transform: translate(0, -1px);
+}
+.lobby-button:not(:last-child) {
+  margin-right: 6.5rem;
+}
+.lobby-button::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  border-radius: 5rem;
+  right: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100%;
+}
+.lobby-button:hover {
+  transition: all 0.2s;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+}
+.lobby-button:hover::after {
+  transition: all 0.2s;
+  transform: scaleX(1.4) scaleY(-1.6);
+  opacity: 0;
+}
+.lobby-list {
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding-top: 3rem;
+  color: #E8E8E8;
+  list-style-type: none;
+  padding-bottom: 5rem;
+  background-color: #66A597;
+  width: 30%;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.lobby-list-title {
+  text-align: center;
+  font-size: 3rem;
+}
+.lobby-list-item {
+  font-size: 2rem;
+}
+
+.games {
+  width: 30%;
+  margin: 0 auto;
+}
+.games-rock {
+  width: 100%;
+  height: 10rem;
+  display: block;
+}
+.games-dice {
+  color: #E8E8E8;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 3rem;
+  width: 100%;
+  height: 35rem;
+  background-image: url("images/dice.png"), linear-gradient(to right, #C94E4E, #66A597);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  transition: all 0.2s;
+}
+.games-dice:hover {
+  transition: all 0.2s;
+  transform: translate(0, -0.5rem) scaleY(1.1) scaleX(1.1);
+}
+.games-flip {
+  color: #E8E8E8;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 3rem;
+  width: 100%;
+  height: 35rem;
+  background-image: url("images/coin.png"), linear-gradient(to right, #E8E8E8, #66A597);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  transition: all 0.2s;
+}
+.games-flip:hover {
+  transition: all 0.2s;
+  transform: translate(0, -0.5rem) scaleY(1.1) scaleX(1.1);
+}
+.games-race {
+  color: #E8E8E8;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 3rem;
+  width: 100%;
+  height: 35rem;
+  background-image: url("images/typing.png"), linear-gradient(to right, #302F2F, #66A597);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  transition: all 0.2s;
+}
+.games-race:hover {
+  transition: all 0.2s;
+  transform: translate(0, -0.5rem) scaleY(1.1) scaleX(1.1);
+}
+.games-rock {
+  color: #E8E8E8;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 3rem;
+  width: 100%;
+  height: 35rem;
+  background-image: url("images/scissors.png"), linear-gradient(to right, #E8E8E8, #C94E4E);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  transition: all 0.2s;
+}
+.games-rock:hover {
+  transition: all 0.2s;
+  transform: translate(0, -0.5rem) scaleY(1.1) scaleX(1.1);
+}
+
+.header {
+  background-image: linear-gradient(90deg, rgba(102, 165, 151, 0.1) 0%, rgba(102, 165, 151, 0.1) 40%, rgba(201, 78, 78, 0.1) 60%, rgba(201, 78, 78, 0.1) 100%);
+  height: 90vh;
+}
+@media (max-width: 37.5em) {
+  .header {
+    height: auto;
+  }
+}
+@media (max-width: 56.25em) {
+  .header {
+    height: auto;
+  }
+}
+.header-header {
+  margin-top: 17vh;
+  position: relative;
+  width: 50%;
+  float: left;
+}
+@media (max-width: 37.5em) {
+  .header-header {
+    width: 100%;
+  }
+}
+@media (max-width: 56.25em) {
+  .header-header {
+    width: 100%;
+  }
+}
+.header-header-title {
+  transform: rotate(-35deg);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-image: linear-gradient(to right, #C94E4E 0%, #C94E4E 40%, #66A597 60%, #66A597 100%);
+  background-clip: text;
+  color: transparent;
+  font-weight: 900;
+  font-size: 6rem;
+}
+@media (max-width: 37.5em) {
+  .header-header-title {
+    transform: rotate(0);
+  }
+}
+@media (max-width: 56.25em) {
+  .header-header-title {
+    transform: rotate(0);
+  }
+}
+.header-header-description {
+  animation: colorAnimation 0.5s infinite;
+  position: absolute;
+  top: 60%;
+  right: 15%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-image: linear-gradient(to right, #C94E4E 0%, #C94E4E 20%, #E8E8E8 40%, #66A597 60%, #66A597 100%);
+  background-clip: text;
+  color: transparent;
+  font-weight: 200;
+  font-size: 3rem;
+  width: 50%;
+}
+.header-header-description {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+.headerBox {
+  width: 50%;
+  float: left;
+  margin-top: 20vh;
+  text-align: left;
+}
+.headerBox-input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  width: 40rem;
+  height: 2.5rem;
+  color: #C94E4E;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2.5rem;
+  box-shadow: 0 0 10 rgba(0, 0, 0, 0.6);
+}
+.headerBox-input:focus {
+  border-bottom: 0.1rem solid #66a597;
+  font-size: 3.5rem;
+  outline: none;
+}
+.headerBox-label {
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: #E8E8E8;
+  font-family: "Courier New", Courier, monospace;
+}
+.headerBox-label:not(:last-child) {
+  padding-right: 2rem;
+}
+.headerBox-label:last-child {
+  margin-right: 7rem;
+}

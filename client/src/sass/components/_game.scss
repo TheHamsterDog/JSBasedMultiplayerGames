@@ -1,0 +1,159 @@
+.game{
+    @include respond(phone){
+
+        width: 42rem;
+        
+        }
+       
+        @include respond(tablet){
+            width: 42rem;
+            
+        }
+    width: 28%;
+    padding-top:5rem;
+    padding-left:2rem;
+    padding-right:2rem;
+    padding-bottom: 2rem;
+
+    // padding-bottom:0rem;
+    color: $colorPrimary;
+    // font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin:2rem auto;
+    text-align:left;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    background-image: linear-gradient(105deg, $colorTertiary, $colorSecondary);
+    &-title{
+        font-weight: 900;
+        font-size: 4rem;
+    }
+    &-label{
+        font-size: 2rem;
+        width:100%;
+        display: block;
+    }
+    &-input{
+        border:none;
+        border-radius: 2rem;
+        padding:0.4rem;
+        background-color: $colorBackground;
+        color:$colorPrimary;
+        font-weight: 900;
+        font-family: 'Times New Roman', Times, serif;
+        &:focus{
+            transition: all 0.2s;
+            outline:none;
+            border:none;
+            width: 90%;
+            padding:2rem;
+            box-shadow:none;
+            border-radius: 0.5rem;
+        }
+        font-size: 2rem;
+        width: 100%;
+        height: 3rem;
+        text-align: center;
+    }
+    &-button-trio{
+        width: 30%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color:$colorTertiary;
+        color:$colorPrimary;
+        border-radius: 2rem;
+        font-size: 2rem;
+        text-align: center;
+        outline:none;
+        border:none;
+        
+        &:not(:last-child){
+            margin-right:2%;
+        }
+        &:hover{
+            transition: .2s;
+            transform: scaleY(1.3) scaleX(1.2)
+        }
+    }
+
+    &-button{
+
+        width: 40%;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color:$colorTertiary;
+        color:$colorPrimary;
+        font-size: 2rem;
+        text-align: center;
+        outline:none;
+        border:none;
+        
+        &:not(:last-child){
+            margin-right: 10%;
+        }
+        &:hover{
+            transition: .2s;
+            transform: scaleY(1.3) scaleX(1.2)
+        }
+    }
+    &-final-won{
+        background-color: $colorTertiary;
+        width: 30%;
+        margin: 5% auto;
+        font-size: 3rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans;
+        color: $colorPrimary;
+        font-weight: 900;
+        text-transform: uppercase;    
+        // height: 5rem;
+        padding-top:5rem;
+        padding-bottom:5rem;
+    }
+    
+}
+.game-final-lost{
+    @include respond(phone){
+
+        width: 42rem;
+        
+        }
+       
+        @include respond(tablet){
+            width: 42rem;
+            
+        }
+    border-radius: 2rem;
+    background-color: $colorSecondary;
+    width: 30%;
+    margin: 5% auto;
+    font-size: 3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans;
+    color: $colorPrimary;
+
+    font-weight: 900;
+    text-transform: uppercase;    
+    // height: 5rem;
+    padding-top:5rem;
+    padding-bottom:5rem;
+}
+.game-race{
+    @include respond(phone){
+
+        width: 35rem;
+        
+        }
+       
+        @include respond(tablet){
+            width: 35rem;
+            
+        }
+
+    background-color: $colorPrimary;
+    height: auto;
+    min-height: 10rem;
+    padding-top:2rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    color: $colorBackground;
+    height: 5rem;
+
+}

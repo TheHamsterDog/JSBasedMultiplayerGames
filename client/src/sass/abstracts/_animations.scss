@@ -1,0 +1,46 @@
+@keyframes colorAnimation{
+    0% {
+        
+        transform: scaleX(1) scaleY(1) translate(0,0) rotate(-35deg);
+        background-image: linear-gradient(to right,  $colorSecondary 0%, $colorPrimary 40% , $colorTertiary 60%, $colorTertiary 100% );
+      
+      
+    }
+    50%{
+      
+        transform:  translate(0,-1%) rotate(-35deg);
+        background-image: linear-gradient(to right,  $colorTertiary 0%, $colorSecondary 40% , $colorPrimary 60%, $colorPrimary 100% );
+      
+    }
+    100%{
+       
+
+        background-image: linear-gradient(to right,  $colorPrimary 0%, $colorTertiary 40% , $colorSecondary 60%, $colorSecondary 100% );
+        transform:   translate(0,-1%) scaleX(1.051) scaleY(1.051) rotate(-35deg);
+      
+    }
+    
+}
+@keyframes colorAnimationMobile{
+
+    0% {
+        
+     
+        background-image: linear-gradient(to right,  $colorSecondary 0%, $colorPrimary 40% , $colorTertiary 60%, $colorTertiary 100% );
+      
+      
+    }
+    50%{
+      
+       
+        background-image: linear-gradient(to right,  $colorTertiary 0%, $colorSecondary 40% , $colorPrimary 60%, $colorPrimary 100% );
+      
+    }
+    100%{
+       
+
+        background-image: linear-gradient(to right,  $colorPrimary 0%, $colorTertiary 40% , $colorSecondary 60%, $colorSecondary 100% );
+        
+      
+    }
+}

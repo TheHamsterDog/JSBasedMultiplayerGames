@@ -1,0 +1,48 @@
+.margin-top-small {
+  margin-top: 2rem;
+}
+.margin-top-medium {
+  margin-top: 4rem;
+}
+.margin-top-large {
+  margin-top: 6rem;
+}
+.margin-top-extra-large {
+  margin-top: 8rem;
+}
+.margin-bottom-small {
+  margin-bottom: 2rem;
+}
+.margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+.margin-bottom-large {
+  margin-bottom: 6rem;
+}
+.margin-bottom-extra-large {
+  margin-bottom: 8rem;
+}
+.margin-right-small {
+  margin-right: 2rem;
+}
+.margin-right-medium {
+  margin-right: 4rem;
+}
+.margin-right-large {
+  margin-right: 6rem;
+}
+.margin-right-extra-large {
+  margin-right: 8rem;
+}
+.margin-left-small {
+  margin-left: 2rem;
+}
+.margin-left-medium {
+  margin-left: 4rem;
+}
+.margin-left-large {
+  margin-left: 6rem;
+}
+.margin-left-extra-large {
+  margin-left: 8rem;
+}

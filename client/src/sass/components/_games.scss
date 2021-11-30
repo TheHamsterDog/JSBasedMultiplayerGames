@@ -1,0 +1,268 @@
+.lobby {
+
+    &-name {
+
+        color: $colorPrimary;
+        font-size: 1.6rem;
+        letter-spacing: .01px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    }
+
+    &-chat {
+        @include respond(phone){
+
+            width: 42rem;
+            height: 40rem;
+            }
+           
+            @include respond(tablet){
+                width: 42rem;
+                height: 40rem;
+            }
+           
+       width:30%;
+        height: 30rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-image: linear-gradient(to right, rgba($colorSecondary, 0.5), rgba($colorTertiary, 0.5));
+        color: #fff;
+        margin: 0 auto;
+        border-radius: 1rem;
+        text-align: left;
+        border: 2rem;
+        font-size: 2rem;
+        
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: .7rem;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        &-message {
+
+            margin-left: 2rem;
+
+        }
+
+        &-small {
+            font-size: 1.2rem;
+            margin-left: 2rem;
+            color: rgba(yellow, 0.8);
+
+        }
+    }
+
+    &-input {
+        outline: none;
+        border: none;
+        background-image: linear-gradient(to right, rgba($colorSecondary, 0.5), rgba($colorTertiary, 0.5));
+        // border-bottom: .1rem solid rgba(0,0,0,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        width: 34rem;
+        height: 2.5rem;
+        color: $colorSecondary;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 2.5rem;
+        box-shadow: 0 0 10 rgba(#000, 0.6);
+
+        &:focus {
+            border-bottom: .1rem solid rgba($colorTertiary, 1);
+            // font-size: 3.5rem;
+            // text-decoration: underline
+            // text-decoration: none;
+            // border: none;
+            outline: none;
+        }
+    }
+
+    &-button {
+            
+            width: 5rem;
+            height: 4rem;
+            // margin-top: -1rem;
+            display: inline-block;
+
+            &:not(:last-child) {
+                margin-right: 6.5rem;
+            }
+
+            content: " ";
+            position: relative;
+            color:$colorPrimary;
+            font-family: 'Courier New',
+            Courier,
+            monospace;
+            outline: none;
+            color:$colorTertiary;
+            border-radius: 2rem;
+            font-weight: 900;
+            font-size: 1.5rem;
+            border-width: 0;
+            transform: translate(0, -1px);
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 0;
+                border-radius: 5rem;
+                right: 0;
+                width: 100%;
+                z-index: -1;
+                height: 100%;
+               
+            }
+
+            &:hover {
+                transition: all 0.2s;
+              
+                box-shadow: 0 5px 10px rgba(#000, 0.8);
+
+                &::after {
+                    transition: all 0.2s;
+                    transform: scaleX(1.4) scaleY(-1.6);
+                    opacity: 0;
+                }
+            }
+        
+    }
+    &-list{
+        @include respond(phone){
+
+            width: 42rem;
+            height: 20rem;
+            }
+           
+            @include respond(tablet){
+                width: 42rem;
+                height: 20rem;
+            }
+        margin: 0 auto;
+        border-radius: 1rem;
+        padding-top: 3rem;
+        color:$colorPrimary;
+        list-style-type:  none;
+        padding-bottom: 5rem;
+        
+        background-color: $colorTertiary;
+        width:30%;
+        text-align: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        &-title{
+            text-align: center;
+            font-size: 3rem ;
+        }
+        &-item{
+            font-size: 2rem;
+        }
+    }
+}
+.games{
+    width: 30%;
+    margin: 0 auto;
+    @include respond(phone){
+
+        width: 42rem;
+        height: 40rem;
+        }
+       
+        @include respond(tablet){
+            width: 42rem;
+            height: 40rem;
+        }
+    &-rock{
+        width: 100%;
+        height:10rem;
+        // height: 50rem;
+        display: block;
+
+    }
+    &-dice{
+        color:$colorPrimary;
+        font-size: 3rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        border:none;
+        border-radius: 3rem;
+
+        width: 100%;
+        height:35rem;
+        background-image: url('images/dice.png'), linear-gradient(to right, $colorSecondary, $colorTertiary);
+        background-repeat:no-repeat;
+        background-size: cover;
+        display: block;
+        transition: all 0.2s;
+        &:hover{
+            transition: all 0.2s;
+            transform: translate(0, -.5rem) scaleY(1.1) scaleX(1.1);
+        }
+    }
+    &-flip{
+        color:$colorPrimary;
+        font-size: 3rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        border:none;
+        border-radius: 3rem;
+
+        width: 100%;
+        height:35rem;
+        background-image: url('images/coin.png'), linear-gradient(to right, $colorPrimary, $colorTertiary);
+        background-repeat:no-repeat;
+        background-position: center;
+        // background-size:  10rem;
+        display: block;
+        transition: all 0.2s;
+        &:hover{
+            transition: all 0.2s;
+            // background-image: url('images/coin.png'), linear-gradient(to right, $colorPrimary, $colorTertiary);
+            transform: translate(0, -.5rem) scaleY(1.1) scaleX(1.1);
+        }
+
+    }
+    &-race{
+        color:$colorPrimary;
+        font-size: 3rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        border:none;
+        border-radius: 3rem;
+        width: 100%;
+        height:35rem;
+        background-image: url('images/typing.png'), linear-gradient(to right, $colorBackground, $colorTertiary);
+        background-repeat:no-repeat;
+        background-size: cover;
+        display: block;
+        transition: all 0.2s;
+        &:hover{
+            transition: all 0.2s;
+            transform: translate(0, -.5rem) scaleY(1.1) scaleX(1.1);
+        }
+
+    }
+    &-rock{
+        color:$colorPrimary;
+        font-size: 3rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        border:none;
+        border-radius: 3rem;
+
+        width: 100%;
+        height:35rem;
+        background-image: url('images/scissors.png'), linear-gradient(to right, $colorPrimary, $colorSecondary);
+        background-repeat:no-repeat;
+        background-size: cover;
+        display: block;
+        transition: all 0.2s;
+        &:hover{
+            transition: all 0.2s;
+            transform: translate(0, -.5rem) scaleY(1.1) scaleX(1.1);
+        }
+    }
+}

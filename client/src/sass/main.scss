@@ -1,0 +1,24 @@
+
+//abstracts
+
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+@import 'utility/respond';
+@import 'abstracts/animations';
+//utility
+
+@import 'utility/margins';
+
+
+//base
+@import 'base/base';
+@import 'base/typography';
+
+
+
+//components
+@import 'components/buttons';
+@import 'components/game';
+@import 'components/games';
+@import 'components/header';
+@import 'components/timer';

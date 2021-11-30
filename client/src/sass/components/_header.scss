@@ -1,0 +1,143 @@
+.header{
+background-image:  linear-gradient(90deg,  rgba($colorTertiary, 0.1) 0%, rgba($colorTertiary, 0.1) 40%  ,  rgba($colorSecondary, 0.1) 60%, rgba($colorSecondary, 0.1) 100% );
+
+height: 90vh;
+@include respond(phone){
+    height: auto;
+    margin-top: 0;
+}
+@include respond(tablet){
+    height: auto;
+    margin-top: 0;
+
+}
+&-header{
+    @include respond(phone){
+        float: none;
+        width:100%;
+        padding-top: 5vh;
+        margin-top: 0vh;
+    }
+    @include respond(tablet){
+        padding-top: 5vh;
+        float: none;
+        margin-top: 0vh;
+        width:100%;
+    }
+   
+    margin-top: 17vh;
+    position: relative;
+    width:50%;
+    float:left;
+    // margin-top: 5rem;
+    &-title{
+        @include respond(phone){
+            transform:rotate(0);
+
+        }
+        @include respond(tablet){
+            transform:rotate(0);
+
+        }
+        transform:rotate(-35deg);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-image: linear-gradient(to right,  $colorSecondary 0%, $colorSecondary 40% , $colorTertiary 60%, $colorTertiary 100% );
+        background-clip: text;
+        color:transparent;
+        font-weight: 900;
+  
+        font-size: 6rem;
+    }
+    &-description{
+        @include respond(phone){
+            animation: colorAnimationMobile .5s infinite;
+            top:90%;
+        }
+        @include respond(tablet){
+            animation: colorAnimationMobile .5s infinite;
+            top:90%;
+        }
+        animation: colorAnimation .5s infinite;
+        
+     
+        position: absolute;
+      
+        top:60%;
+        right:15%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-image: linear-gradient(to right,  $colorSecondary 0%, $colorSecondary 20% ,  $colorPrimary 40%, $colorTertiary 60%, $colorTertiary 100% );
+        background-clip: text;
+        color:transparent;
+        font-weight: 200;
+        font-size: 3rem;
+        width:50%;
+    }
+    &-description{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+}
+
+&Box {
+    @include respond(phone){
+        margin: 20rem auto;
+        float: none;
+        width:70%;
+    }
+    @include respond(tablet){
+        margin: 20rem auto;
+        float: none;
+        width:70%;
+    }
+
+    width:50%;
+    float:left;
+    // margin: 0 auto;
+    margin-top: 20vh;
+    
+    // transform: translateX(20%);
+
+    text-align: left;
+    &-input{
+        outline:none;
+        border:none;
+        background-color:transparent;
+        border-bottom: .1rem solid rgba(0,0,0,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        width: 40rem;
+        height: 2.5rem;
+        color: $colorSecondary;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 2.5rem;
+        box-shadow: 0 0 10 rgba( #000, 0.6);
+        &:focus{
+            border-bottom: .1rem solid rgba($colorTertiary, 1);
+            font-size: 3.5rem;
+            // text-decoration: underline
+            // text-decoration: none;
+            // border: none;
+            outline:none;
+        }
+    }
+    &-label {
+        text-transform: uppercase;
+        &:not(:last-child) {
+            padding-right: 2rem;
+        }
+
+        // margin-right: 2rem;
+        &:last-child {
+            margin-right: 7rem;
+        }
+
+        // margin-right: 2rem;
+        font-size: 2rem;
+        color: $colorPrimary;
+        font-family: 'Courier New',
+        Courier,
+        monospace;
+
+    }
+
+
+}}

@@ -1,0 +1,24 @@
+html{
+ 
+  
+        font-size:62.5%;
+        @include respond(phone){
+        font-size:50%;
+        }
+        @include respond(tablet-landscape){
+        font-size:56.25%;
+        }
+        @include respond(tablet){
+        font-size:50%;
+        }
+        @include respond(big-desktop){
+            font-size:75%;
+        }
+        }
+
+body{
+    text-align: center;
+    padding:0;
+    margin: 0;
+    background-color: $colorBackground;
+}

@@ -1,0 +1,56 @@
+.button{
+    width: 12rem;
+    height: 6rem;
+    display: inline-block;
+    &:not(:last-child){
+        margin-right: 6.5rem;
+    }
+    content: " ";
+    position: relative;
+    color:$colorPrimary;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+    border-radius: 5rem;
+    border-width: 0;
+    &::after{
+        content:" ";
+        position: absolute;
+        top: 0;
+        border-radius: 5rem;
+        right:0;
+        width: 100%;
+        z-index: -1;
+        height: 100%;
+    }
+    &:hover{
+     transition: all 0.2s;
+        transform: translate(0, -3px);
+        box-shadow: 0 5px 10px rgba(#000, 0.8);
+        &::after{
+            transition: all 0.2s;
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    &-primary{
+        &::after{
+        
+            background-color:$colorTertiary;
+        }
+        background-color: $colorTertiary;
+        }
+       
+      
+   
+    &-secondary{
+        &::after{
+        
+            background-color:$colorSecondary;
+        }
+        background-color: $colorSecondary;
+
+
+    }
+
+}
+

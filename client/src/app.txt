@@ -1,0 +1,217 @@
+import logo from './logo.svg';
+import './App.css';
+import Dice from './components/Dice.tsx';
+import Race from './components/Race.tsx'
+import Rock from './components/Rock.tsx'
+import React from 'react';
+import Flip from './components/Flip.tsx'
+import { BrowserRouter as Router } from 'react-router-dom';
+import {Route, Link, Switch, Provider } from "react-router-dom";
+import io from 'socket.io-client';
+import socket from './socket';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+
+
+function App() {
+  const [state, setState]= React.useState({roomID:'', roomJoined:false, joinRoomID:'', chat:[], chatBox:[], room:{}, game:'', choice:Math.floor(Math.random() *5) +1,voluntarily:false, timer:{enabled:false } , leaderQuit:false, submitted:false,  victory:false, defeat:false , winners:[], loosers:[] });
+  
+  socket.on('hello', (msg)=>{
+    console.log(msg.msg);
+    socket.emit('get-id');
+  });
+  socket.on('message', (msg)=>{
+    console.log(msg);
+    setState({...state, chat:[...state.chat, {author:msg.username, msg:msg.msg}]});
+  })
+  socket.on('player-disconnected', (msg)=>{
+    setState({...state, room:msg.room, chat:[...state.chat, {author:null, msg:msg.msg}]});
+})
+  socket.on('room-created', (msg)=>{
+    console.log(msg.msg);
+    setState({...state, roomID:msg.msg, roomJoined:true, room:msg.room, leader:true});
+})
+  socket.on('new-connection', (msg)=>{
+
+    setState({...state, room:msg.room, chat:[...state.chat, {author:null, msg:msg.msg}]});
+
+
+  })
+socket.on('room-joined', (msg)=>{
+  setState({...state, roomID:msg.msg, roomJoined:true, room:msg.room, leader:false});  
+  console.log(msg.users);
+  console.log(msg.msg);  
+})
+socket.on('exit-lobby', (msg)=>{
+  setState({roomID:'', roomJoined:false, joinRoomID:'', chat:[], chatBox:[], room:{}, game:'',  leaderQuit:true, leader:false});
+})
+
+
+  const handleJoin=(e)=>{
+    e.preventDefault(e.target.joinRoom);
+    console.log(e);
+    socket.emit('join-room', {roomID:state.joinRoomID});
+  }
+  const handleCreate=(e)=>{
+    socket.emit('create-room');
+  }
+  const handleChange=(e)=>{
+    setState({...state, joinRoomID:e.target.value});
+  }
+  socket.on('ask-choice-dice', ()=>{ 
+
+    setState({...state, game:'/dice'});
+
+  })
+  socket.on('victory', ()=>{
+    setState({...state, victory:true});
+    console.log('oh yes!')
+  })
+  socket.on('normalize',()=>{
+  setState({...state, game:'/', choice:Math.floor(Math.random() *5) +1,voluntarily:false, leaderQuit:false, submitted:false,  victory:false, defeat:false , winners:[], loosers:[] });
+  
+  })
+  socket.on('defeat', ()=>{
+    console.log('oh no!')
+    setState({...state, defeat:true});
+    
+  });
+  socket.on('results', (msg)=>{
+    setState({...state, winners:msg.winners, loosers:msg.loosers});
+
+  })
+
+if(state.submitted===false && state.roomID.length>0 & state.choice===state.choice){
+
+
+  socket.once('submit-dice-immediately',()=>{
+
+   
+    
+      
+      const options = {roomID:state.roomID, choice: state.choice};
+      console.log(options);
+      socket.emit(`submit-dice-choice`, options );
+      console.log('submitted your choices')
+      setState({...state, submitted:true});
+    });}
+  
+  return (
+    <div className="App">
+
+
+      <Router >
+        <Switch>
+          <Route exact path='/'>
+              <label for="username">Set a username</label><input id='username' disabled={state.roomJoined} onChange={(e)=>socket.emit('set-username', {username:e.target.value})}type="text"></input>
+              <form onSubmit={handleJoin}>
+                <label for='joinRoom'> ROOM ID</label><input id='joinRoom' name='id' onChange={handleChange} type='text'/>
+                <button htmlType="submit"> Join Room</button>
+            
+              
+              </form>
+
+
+              <button onClick={handleCreate}> Create Room</button>
+            {state.roomJoined?<div><h1>You are connected to {state.roomID} </h1>
+            
+            <div>
+              <div style={{ height:'140px',overflowY:'scroll'}} >
+                { state.chat.map((chat)=>{
+                  if(chat.author!==null){
+
+                  
+                  return(<p>{chat.author + " "}: {chat.msg}</p>)
+                }
+                else{
+                  return <small> <br/>{chat.msg}</small>
+                }
+                })}
+              </div>
+              <form onSubmit={(e)=>{
+                  e.preventDefault();
+                  setState({...state, chat:[...state.chat, {author:'You', msg:state.chatBox}], chatBox:''});
+                  socket.emit('message', {msg:state.chatBox, roomID:state.roomID});
+
+              }}>
+                <input type="text" value={state.chatBox} name="chat-box" onChange={(e)=>{
+                    setState({...state, chatBox:e.target.value});
+                }}/>
+                <button htmlType='submit'> Send</button>
+              </form>
+              <br></br>
+{state.leader? <div><button onClick={()=>{ socket.emit('dice') } }>Roll Dice</button>
+              <button onClick={()=> socket.emit('flip') }>Flip A Coin</button>
+              <button onClick={()=>socket.emit('rock') }> Rock Paper Scissors</button>
+              <button onClick={()=>socket.emit('race') }> Typing Race</button></div>:null}
+
+              
+
+            </div>
+            <div>
+              <ul style={{ listStyleType: "none" }}>
+                Players
+                <br></br>
+                <br></br>
+                {state.room.players.map(player =><li>{player.username}</li>)}
+           
+              </ul>
+            </div>
+            </div>:null}
+            {state.leaderQuit?<div><br></br><small> You've been removed from the lobby, as the leader has left the lobby.</small></div> :null}
+
+          {state.game==='/dice'? <div><h1>Rolling The Dice!</h1> <label for='choice'>Choice your Lucky Number</label><input value={state.choice}type='number' min='1' max='6' id='choice' onChange={(e)=>{
+            if(e.target.value>=1 && e.target.value<=6){
+              setState({...state, choice:parseInt(e.target.value), voluntarily:true})
+            }
+            else{
+              alert('Please select a number between 1 and 6');
+            }
+            
+        
+          }}></input>{state.choice<6?< button onClick={()=>setState({...state, choice:parseInt(parseInt(state.choice)+1)})}> + </button>:null}{state.choice>1?<button onClick={()=>setState({...state, choice:parseInt(parseInt(state.choice)-1)})}>-</button>:null}
+          <br></br>
+          <br>
+          </br>
+          <br /> 
+             <center>
+             <small>Your choice will be sent to the server automatically in </small>
+             <br /> 
+             <br /> 
+             <br /> 
+         {state.victory===true||state.defeat===true?<div><h1>{state.victory? 'victory!' : <div>defeat <br></br>  <br/><br></br><iframe width="560" height="315" autoplay src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture " allowfullscreen ></iframe></div>}</h1></div> : <div><CountdownCircleTimer
+    isPlaying={!state.submitted}
+    duration={10}
+    colors={[
+      ['#004777', 0.33],
+      ['#F7B801', 0.33],
+      ['#A30000', 0.33],
+    ]}
+  >
+ 
+    {({ remainingTime }) =>{
+      return(
+    <div>
+    <h1>{remainingTime}</h1>
+    <small>seconds</small> </div> )
+      }} 
+  </CountdownCircleTimer></div>}
+  </center>
+          <br></br>
+     
+          </div>:null}
+          </Route>
+
+          
+          <Route path='/dice'> <Dice state={state} socket={socket}/></Route>
+          <Route path='/race'><Race  state={state} socket={socket} /> </Route>
+          <Route path='/Flip'> <Flip  state={state} socket={socket}> </Flip></Route>
+          <Route path='/rock'><Rock state={state}  socket={socket}> </Rock></Route>
+        </Switch>
+
+
+      </Router>
+    </div>
+  );
+}
+
+export default App;

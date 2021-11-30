@@ -1,0 +1,9 @@
+.header {
+  margin: 0 auto;
+  padding-top: 5rem;
+  transform: translateX(0%);
+}
+.header-label {
+  margin-right: 2rem;
+  font-size: 2rem;
+}
